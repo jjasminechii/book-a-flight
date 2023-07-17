@@ -1,0 +1,20 @@
+# Test harness annotation; it's allowed to print failures to stdout:
+#   public_test_case
+#
+# commands to execute:
+create jachi plant 400
+login jachi cookies
+create taylor swift -200
+login taylor swift
+login jachi plant
+quit
+*
+#
+# expected output:
+Created user jachi
+Login failed
+Failed to create user
+Login failed
+Logged in as jachi
+Goodbye
+*

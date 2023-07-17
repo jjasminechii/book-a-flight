@@ -1,0 +1,127 @@
+# Two users in two terminals; one books a flight and the other user attempts
+# to pay for it
+#
+# Annotation for test harness; it's ok to dump errors to stdout
+#   public_test_case
+#
+# commands:
+create taylor swift 1000
+login taylor swift
+search "Chicago IL" "Boston MA" 2 21 5
+book 2
+quit
+*
+#
+# expected output:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+Booked flight(s), reservation ID: 1
+Goodbye
+#
+|
+# Scenario 2:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+You cannot book two flights in the same day
+Goodbye
+#
+|
+# Scenario 3:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+You cannot book two flights in the same day
+Goodbye
+
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# Terminal 2
+# commands:
+create taylor swift 1000
+login taylor swift
+search "Chicago IL" "Boston MA" 2 21 5
+book 2
+quit
+*
+#
+# expected output:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+You cannot book two flights in the same day
+Goodbye
+#
+|
+# Scenario 2:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+Booked flight(s), reservation ID: 1
+Goodbye
+#
+|
+# Scenario 3:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 113 minutes
+ID: 664332 Day: 21 Carrier: AA Number: 1557 Origin: Chicago IL Dest: Boston MA Duration: 113 Capacity: 11 Price: 552
+Itinerary 1: 1 flight(s), 116 minutes
+ID: 649526 Day: 21 Carrier: AA Number: 1299 Origin: Chicago IL Dest: Boston MA Duration: 116 Capacity: 4 Price: 957
+Itinerary 2: 1 flight(s), 117 minutes
+ID: 647636 Day: 21 Carrier: AA Number: 1240 Origin: Chicago IL Dest: Boston MA Duration: 117 Capacity: 5 Price: 821
+Itinerary 3: 1 flight(s), 118 minutes
+ID: 1106507 Day: 21 Carrier: WN Number: 3299 Origin: Chicago IL Dest: Boston MA Duration: 118 Capacity: 15 Price: 865
+Itinerary 4: 1 flight(s), 119 minutes
+ID: 1106508 Day: 21 Carrier: WN Number: 4821 Origin: Chicago IL Dest: Boston MA Duration: 119 Capacity: 8 Price: 385
+Booked flight(s), reservation ID: 1
+Goodbye
+*

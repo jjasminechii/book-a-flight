@@ -1,0 +1,32 @@
+# Try to make the same reservation twice.
+#
+# Annotation for test harness; it's ok to dump errors to stdout
+#   public_test_case
+#
+# commands:
+create taylor swift 10000
+login taylor swift
+search "Houston TX" "New York NY" 2 6 4
+book 0
+book 1
+reservations
+quit
+*
+#
+# expected output:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 175 minutes
+ID: 34640 Day: 6 Carrier: AA Number: 1436 Origin: Houston TX Dest: New York NY Duration: 175 Capacity: 9 Price: 602
+Itinerary 1: 1 flight(s), 191 minutes
+ID: 96189 Day: 6 Carrier: CO Number: 732 Origin: Houston TX Dest: New York NY Duration: 191 Capacity: 16 Price: 413
+Itinerary 2: 1 flight(s), 191 minutes
+ID: 1018154 Day: 6 Carrier: UA Number: 689 Origin: Houston TX Dest: New York NY Duration: 191 Capacity: 14 Price: 637
+Itinerary 3: 1 flight(s), 193 minutes
+ID: 90865 Day: 6 Carrier: CO Number: 432 Origin: Houston TX Dest: New York NY Duration: 193 Capacity: 3 Price: 826
+Booked flight(s), reservation ID: 1
+You cannot book two flights in the same day
+Reservation 1 paid: false:
+ID: 34640 Day: 6 Carrier: AA Number: 1436 Origin: Houston TX Dest: New York NY Duration: 175 Capacity: 9 Price: 602
+Goodbye
+*

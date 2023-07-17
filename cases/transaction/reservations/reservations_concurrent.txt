@@ -1,0 +1,224 @@
+# Try to make the same reservation twice.
+#
+# Annotation for test harness, telling it that it's ok to output errors:
+#   public_test_case
+#
+# commands for user1 to execute:
+create user1 user1 10000
+login user1 user1
+search "Kahului HI" "Los Angeles CA" 0 6 1
+book 0
+reservations
+quit
+*
+#
+# one of several expected outputs from user1's commands:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# another possible output from user1:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# third possible output from user1:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# more possible output from user1:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# option 5 for user1's output:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# user1's output, option 6
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# More potential output for user1:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# Last possible output for user1:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 273 minutes
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# commands for user1 to execute in a different terminal:
+create user1 user1 10000
+login user1 user1
+search "Kahului HI" "Los Angeles CA" 0 8 1
+book 0
+reservations
+quit
+*
+#
+# one of eight possible outputs for this second terminal:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# second possible output for this second terminal:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# a third possible output for this second terminal:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# another possibile output for the other terminal:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# the other terminal, option 5:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# possible output from the second terminal (6 of 8):
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 2
+Reservation 1 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Reservation 2 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Goodbye
+|
+#
+# possible output from the second terminal (7 of 8):
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+|
+#
+# last possible output for the second terminal:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 280 minutes
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Booked flight(s), reservation ID: 1
+Reservation 1 paid: false:
+ID: 887207 Day: 8 Carrier: HA Number: 56 Origin: Kahului HI Dest: Los Angeles CA Duration: 280 Capacity: 16 Price: 296
+Reservation 2 paid: false:
+ID: 131239 Day: 6 Carrier: DL Number: 292 Origin: Kahului HI Dest: Los Angeles CA Duration: 273 Capacity: 14 Price: 689
+Goodbye
+*

@@ -1,0 +1,38 @@
+# Tests 2 terminals trying to create an account with the same username
+# One should succeed, the other should fail
+#
+# Annotation for test harness; it's ok to dump errors to stdout
+#   public_test_case
+#
+#
+# Terminal 1:
+create user pwd1 100
+quit
+*
+#
+# scenario 1 for Terminal 1: we succeed in creating user, Terminal 2 fails
+Created user user
+Goodbye
+|
+#
+# scenario 2 for Terminal 1: we fail, Terminal 2 succeeds
+Failed to create user
+Goodbye
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# Terminal 2
+create user pwd2 100
+quit
+*
+#
+# scenario 1 for Terminal 2: Terminal 1 succeeded, so we failed
+Failed to create user
+Goodbye
+|
+#
+# scenario 2 for Terminal 2: we succeeded, so Terminal 1 fails
+Created user user
+Goodbye
+*

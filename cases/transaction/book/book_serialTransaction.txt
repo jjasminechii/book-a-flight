@@ -1,0 +1,37 @@
+# Annotation for test harness, telling it that it's ok to output errors:
+#   public_test_case
+#
+# commands for taylor to execute:
+create taylor swift 10000
+login taylor swift
+search "Los Angeles CA" "New York NY" 2 25 9
+book 3
+book 2
+quit
+*
+#
+# expected output for taylor, first scenario:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 291 minutes
+ID: 987038 Day: 25 Carrier: UA Number: 912 Origin: Los Angeles CA Dest: New York NY Duration: 291 Capacity: 19 Price: 459
+Itinerary 1: 1 flight(s), 292 minutes
+ID: 738404 Day: 25 Carrier: B6 Number: 1024 Origin: Los Angeles CA Dest: New York NY Duration: 292 Capacity: 7 Price: 437
+Itinerary 2: 1 flight(s), 292 minutes
+ID: 744329 Day: 25 Carrier: B6 Number: 24 Origin: Los Angeles CA Dest: New York NY Duration: 292 Capacity: 15 Price: 279
+Itinerary 3: 1 flight(s), 292 minutes
+ID: 1030279 Day: 25 Carrier: VX Number: 412 Origin: Los Angeles CA Dest: New York NY Duration: 292 Capacity: 15 Price: 329
+Itinerary 4: 1 flight(s), 295 minutes
+ID: 738261 Day: 25 Carrier: B6 Number: 624 Origin: Los Angeles CA Dest: New York NY Duration: 295 Capacity: 14 Price: 642
+Itinerary 5: 1 flight(s), 297 minutes
+ID: 738155 Day: 25 Carrier: B6 Number: 424 Origin: Los Angeles CA Dest: New York NY Duration: 297 Capacity: 5 Price: 562
+Itinerary 6: 1 flight(s), 299 minutes
+ID: 738111 Day: 25 Carrier: B6 Number: 324 Origin: Los Angeles CA Dest: New York NY Duration: 299 Capacity: 10 Price: 528
+Itinerary 7: 1 flight(s), 299 minutes
+ID: 744430 Day: 25 Carrier: B6 Number: 224 Origin: Los Angeles CA Dest: New York NY Duration: 299 Capacity: 11 Price: 364
+Itinerary 8: 1 flight(s), 300 minutes
+ID: 744381 Day: 25 Carrier: B6 Number: 124 Origin: Los Angeles CA Dest: New York NY Duration: 300 Capacity: 15 Price: 107
+Booked flight(s), reservation ID: 1
+You cannot book two flights in the same day
+Goodbye
+*

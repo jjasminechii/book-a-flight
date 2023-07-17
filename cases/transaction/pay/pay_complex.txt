@@ -1,0 +1,44 @@
+# User pays for an itinerary before booking, after booking, and again after
+# already paying for it.
+#
+# - First payment should fail, as no reservations have been made for
+#   this user yet.
+# - Second payment should succeed.
+# - Third payment should fail as no UNPAID reservations exist for this
+#   user anymore.
+#
+# Test harness annotation; it's allowed to print failures to stdout:
+#   public_test_case
+#
+# commands to execute:
+pay 1
+create taylor swift 20000
+login taylor swift
+pay 1
+search "San Francisco CA" "New York NY" 2 17 5
+book 0
+pay 1
+pay 1
+quit
+*
+#
+# expected output:
+Cannot pay, not logged in
+Created user taylor
+Logged in as taylor
+Cannot find unpaid reservation 1 under user: taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+Booked flight(s), reservation ID: 1
+Paid reservation: 1 remaining balance: 19243
+Cannot find unpaid reservation 1 under user: taylor
+Goodbye
+*

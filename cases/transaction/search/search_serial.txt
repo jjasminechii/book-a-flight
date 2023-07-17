@@ -1,0 +1,23 @@
+# Annotation for test harness, telling it that it's ok to output errors:
+#   public_test_case
+#
+# commands for user1 to execute:
+create taylor swift 100000
+login taylor swift
+search "Seattle WA" "Houston TX" 2 12 4
+quit
+*
+#
+# expected output from user1's commands:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 235 minutes
+ID: 1075919 Day: 12 Carrier: UA Number: 1921 Origin: Seattle WA Dest: Houston TX Duration: 235 Capacity: 17 Price: 583
+Itinerary 1: 1 flight(s), 238 minutes
+ID: 108536 Day: 12 Carrier: CO Number: 1823 Origin: Seattle WA Dest: Houston TX Duration: 238 Capacity: 5 Price: 886
+Itinerary 2: 1 flight(s), 240 minutes
+ID: 89540 Day: 12 Carrier: CO Number: 366 Origin: Seattle WA Dest: Houston TX Duration: 240 Capacity: 4 Price: 331
+Itinerary 3: 1 flight(s), 242 minutes
+ID: 86701 Day: 12 Carrier: CO Number: 223 Origin: Seattle WA Dest: Houston TX Duration: 242 Capacity: 9 Price: 466
+Goodbye
+*

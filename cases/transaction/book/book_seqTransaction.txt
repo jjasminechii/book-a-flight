@@ -1,0 +1,163 @@
+# This tests two users trying to book the same flight with only 1 seat left.
+# One of them should succeed; the other should fail.
+#
+# Annotation for test harness, telling it that it's ok to output errors:
+#   public_test_case
+#
+# commands for taylor to execute:
+create taylor swift 10000
+login taylor swift
+search "San Francisco CA" "New York NY" 2 17 5
+book 3
+quit
+*
+#
+# expected output for taylor, first scenario:
+#   taylor succeeds in booking and user2 fails
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+You cannot book two flights in the same day
+Goodbye
+|  # "|" denotes an alternate outcome scenario
+#
+# expected output for user1, second scenario:
+#   user1 fails in booking and user2 succeeds
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+#
+# Scenario 3
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+You cannot book two flights in the same day
+Goodbye
+|
+#
+# Scenario 4:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+Booked flight(s), reservation ID: 1
+Goodbye
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# user2 is attempting to do the same thing as user1:
+create taylor swift 10000
+login taylor swift
+search "San Francisco CA" "New York NY" 2 17 5
+book 3
+quit
+*
+#
+# expected output for user2, first scenario:
+#   user1 succeeds in booking and user2 fails
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+#
+# expected output for user2, second scenario:
+#   user1 fails in booking and user2 succeeds
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+You cannot book two flights in the same day
+Goodbye
+|
+#
+# Scenario 3:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+#
+# Scenario 4:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 307 minutes
+ID: 1000851 Day: 17 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 307 Capacity: 17 Price: 757
+Itinerary 1: 1 flight(s), 309 minutes
+ID: 732091 Day: 17 Carrier: B6 Number: 316 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 5 Price: 243
+Itinerary 2: 1 flight(s), 314 minutes
+ID: 802453 Day: 17 Carrier: DL Number: 2521 Origin: San Francisco CA Dest: New York NY Duration: 314 Capacity: 10 Price: 893
+Itinerary 3: 1 flight(s), 315 minutes
+ID: 676066 Day: 17 Carrier: AA Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 12 Price: 277
+Itinerary 4: 1 flight(s), 315 minutes
+ID: 787905 Day: 17 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 141
+You cannot book two flights in the same day
+Goodbye
+*

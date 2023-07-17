@@ -1,0 +1,51 @@
+# Test harness annotation; can output errors to stdout:
+#   public_test_case
+#
+# commands to execute:
+search "San Francisco CA" "New York NY" 0 12 20
+quit
+*
+#
+# expected output:
+Itinerary 0: 1 flight(s), 301 minutes
+ID: 1008402 Day: 12 Carrier: UA Number: 502 Origin: San Francisco CA Dest: New York NY Duration: 301 Capacity: 10 Price: 372
+Itinerary 1: 1 flight(s), 308 minutes
+ID: 675808 Day: 12 Carrier: AA Number: 16 Origin: San Francisco CA Dest: New York NY Duration: 308 Capacity: 9 Price: 381
+Itinerary 2: 1 flight(s), 308 minutes
+ID: 675943 Day: 12 Carrier: AA Number: 20 Origin: San Francisco CA Dest: New York NY Duration: 308 Capacity: 14 Price: 539
+Itinerary 3: 1 flight(s), 308 minutes
+ID: 729856 Day: 12 Carrier: B6 Number: 16 Origin: San Francisco CA Dest: New York NY Duration: 308 Capacity: 6 Price: 175
+Itinerary 4: 1 flight(s), 309 minutes
+ID: 772881 Day: 12 Carrier: DL Number: 468 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 18 Price: 101
+Itinerary 5: 1 flight(s), 309 minutes
+ID: 776235 Day: 12 Carrier: DL Number: 2240 Origin: San Francisco CA Dest: New York NY Duration: 309 Capacity: 4 Price: 119
+Itinerary 6: 1 flight(s), 310 minutes
+ID: 1008619 Day: 12 Carrier: UA Number: 758 Origin: San Francisco CA Dest: New York NY Duration: 310 Capacity: 8 Price: 153
+Itinerary 7: 1 flight(s), 311 minutes
+ID: 643047 Day: 12 Carrier: AA Number: 164 Origin: San Francisco CA Dest: New York NY Duration: 311 Capacity: 3 Price: 935
+Itinerary 8: 1 flight(s), 311 minutes
+ID: 727198 Day: 12 Carrier: B6 Number: 916 Origin: San Francisco CA Dest: New York NY Duration: 311 Capacity: 18 Price: 409
+Itinerary 9: 1 flight(s), 312 minutes
+ID: 727080 Day: 12 Carrier: B6 Number: 616 Origin: San Francisco CA Dest: New York NY Duration: 312 Capacity: 5 Price: 948
+Itinerary 10: 1 flight(s), 313 minutes
+ID: 775768 Day: 12 Carrier: DL Number: 1859 Origin: San Francisco CA Dest: New York NY Duration: 313 Capacity: 6 Price: 205
+Itinerary 11: 1 flight(s), 315 minutes
+ID: 775983 Day: 12 Carrier: DL Number: 2040 Origin: San Francisco CA Dest: New York NY Duration: 315 Capacity: 9 Price: 414
+Itinerary 12: 1 flight(s), 316 minutes
+ID: 1008518 Day: 12 Carrier: UA Number: 637 Origin: San Francisco CA Dest: New York NY Duration: 316 Capacity: 7 Price: 775
+Itinerary 13: 1 flight(s), 316 minutes
+ID: 1008620 Day: 12 Carrier: UA Number: 760 Origin: San Francisco CA Dest: New York NY Duration: 316 Capacity: 8 Price: 920
+Itinerary 14: 1 flight(s), 317 minutes
+ID: 1027666 Day: 12 Carrier: VX Number: 24 Origin: San Francisco CA Dest: New York NY Duration: 317 Capacity: 3 Price: 218
+Itinerary 15: 1 flight(s), 318 minutes
+ID: 772846 Day: 12 Carrier: DL Number: 414 Origin: San Francisco CA Dest: New York NY Duration: 318 Capacity: 15 Price: 843
+Itinerary 16: 1 flight(s), 318 minutes
+ID: 1008679 Day: 12 Carrier: UA Number: 898 Origin: San Francisco CA Dest: New York NY Duration: 318 Capacity: 19 Price: 658
+Itinerary 17: 1 flight(s), 318 minutes
+ID: 1027660 Day: 12 Carrier: VX Number: 22 Origin: San Francisco CA Dest: New York NY Duration: 318 Capacity: 12 Price: 886
+Itinerary 18: 1 flight(s), 319 minutes
+ID: 730061 Day: 12 Carrier: B6 Number: 416 Origin: San Francisco CA Dest: New York NY Duration: 319 Capacity: 15 Price: 630
+Itinerary 19: 1 flight(s), 319 minutes
+ID: 1027672 Day: 12 Carrier: VX Number: 26 Origin: San Francisco CA Dest: New York NY Duration: 319 Capacity: 2 Price: 422
+Goodbye
+*

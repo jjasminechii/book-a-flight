@@ -1,0 +1,88 @@
+# Two terminals both attempt to create user1, then book a flight. One of the
+# two terminals will succeed in user creation, but both will succeed in
+# logging in.
+#
+# Annotation for test harness; it's ok to dump errors to stdout
+#   public_test_case
+#
+# Terminal 1's commands:
+create taylor swift 2000
+create selena gomez 10000
+login taylor swift
+login selena gomez
+quit
+*
+#
+# Scenario 1:
+Failed to create user
+Failed to create user
+Logged in as taylor
+User already logged in
+Goodbye
+|
+#
+# Scenario 2:
+Created user taylor
+Created user selena
+Logged in as taylor
+User already logged in
+Goodbye
+|
+#
+# Scenario 3:
+Created user taylor
+Failed to create user
+Logged in as taylor
+User already logged in
+Goodbye
+#
+|
+# Scenario 4:
+Failed to create user
+Created user selena
+Logged in as taylor
+User already logged in
+Goodbye
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# Terminal 2's commands:
+create taylor swift 2000
+create selena gomez 10000
+login taylor swift
+login selena gomez
+quit
+*
+#
+# Scenario 1:
+Created user taylor
+Created user selena
+Logged in as taylor
+User already logged in
+Goodbye
+|
+#
+# Scenario 2:
+Failed to create user
+Failed to create user
+Logged in as taylor
+User already logged in
+Goodbye
+|
+#
+# Scenario 3:
+Failed to create user
+Created user selena
+Logged in as taylor
+User already logged in
+Goodbye
+|
+#
+# Scenario 4:
+Created user taylor
+Failed to create user
+Logged in as taylor
+User already logged in
+Goodbye
+*

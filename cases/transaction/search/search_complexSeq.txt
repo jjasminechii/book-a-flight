@@ -1,0 +1,104 @@
+# Try to make the same reservation twice.
+#
+# Annotation for test harness, telling it that it's ok to output errors:
+#   public_test_case
+#
+# commands for user1 to execute:
+create taylor swift 10001
+login taylor swift
+search "Houston TX" "Los Angeles CA" 2 21 4
+quit
+*
+#
+# one of several expected outputs from taylor's commands:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+|
+#
+# another possible output from taylor:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+|
+#
+# another possible output
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+*
+#
+##################### Concurrently executed commands: #####################
+#
+# commands for user1 to execute in a different terminal:
+create taylor swift 10001
+login taylor swift
+search "Houston TX" "Los Angeles CA" 2 21 4
+quit
+*
+#
+# one of eight possible outputs for this second terminal:
+Failed to create user
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+|
+#
+# second possible output for this second terminal:
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+|
+#
+# more output
+Created user taylor
+Logged in as taylor
+Itinerary 0: 1 flight(s), 182 minutes
+ID: 99494 Day: 21 Carrier: CO Number: 1095 Origin: Houston TX Dest: Los Angeles CA Duration: 182 Capacity: 12 Price: 564
+Itinerary 1: 1 flight(s), 185 minutes
+ID: 88174 Day: 21 Carrier: CO Number: 295 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 2 Price: 321
+Itinerary 2: 1 flight(s), 185 minutes
+ID: 597118 Day: 21 Carrier: WN Number: 1702 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 14 Price: 944
+Itinerary 3: 1 flight(s), 185 minutes
+ID: 997699 Day: 21 Carrier: UA Number: 1757 Origin: Houston TX Dest: Los Angeles CA Duration: 185 Capacity: 9 Price: 187
+Goodbye
+*
